@@ -26,3 +26,4 @@ while year_download < 1974:
     year_download += 1
 
 print("Box score files download complete.")
+
