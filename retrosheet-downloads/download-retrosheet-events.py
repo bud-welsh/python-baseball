@@ -15,14 +15,11 @@
 
 import urllib.request 
 
-year_download = 1918 # This is the earliest year that retrosheet has available for regular season event files.
-
 print("Starting to download event files")
 
-while year_download < 2020:
-    url = "https://www.retrosheet.org/events/" + str(year_download) + "eve.zip"
-    urllib.request.urlretrieve(url, '/home/tk421/retrosheet/regular-season-events/' + str(year_download) + 'eve.zip')
-    print("Downloading " + str(year_download) + " event files") # I don't need this step, but it is nice to see it anyway because of the amount of time it takes to download each file.
-    year_download += 1
+for year in range(1918, 2020):
+    url = "https://www.retrosheet.org/events/" + str(year) + "eve.zip"
+    urllib.request.urlretrieve(url, '/home/tk421/retrosheet/regular-season-events/' + str(year) + 'eve.zip')
+    print("Downloading " + str(year) + " event files")
 
 print("Event files download complete")
