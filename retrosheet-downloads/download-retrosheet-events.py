@@ -1,5 +1,10 @@
 # This will download all the event files from 1918 to 2019 from retrosheet.org.
 
+# The information used here was obtained free of
+#      charge from and is copyrighted by Retrosheet.  Interested
+#      parties may contact Retrosheet at 20 Sunset Rd.,
+#      Newark, DE 19711.
+
 # https://www.retrosheet.org/game.htm has the event file links.
 
 # These are the paths to the yearly event files on retrosheet.org:
