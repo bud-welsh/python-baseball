@@ -17,6 +17,6 @@ for year in range(1933, 1945):
 for year in range(1946, 2020):
     url = 'https://www.retrosheet.org/events/' + str(year) + 'as.zip'
     urllib.request.urlretrieve(url, '/home/tk421/retrosheet/allstar-events/' + str(year) + 'as.zip')
-    print(str(year) + "All-Star Event files are downloaded.")
+    print(str(year) + " All-Star Event files are downloaded.")
 
 print("Downloads Complete")
