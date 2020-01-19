@@ -16,15 +16,12 @@
 
 import urllib.request 
 
-year_download = 1900 # This is the earliest year that retrosheet has available for regular season box score files.
-
 print("Starting to download box score files.")
 
-while year_download < 1960:
-    url = "https://www.retrosheet.org/events/" + str(year_download) + "sbox.zip"
-    urllib.request.urlretrieve(url, '/home/tk421/retrosheet/regular-season-box-scores/' + str(year_download) + 'sbox.zip')
-    print("Downloading " + str(year_download) + "'s box score files") # I don't need this step, but it is nice to see it anyway because of the amount of time it takes to download each file.
-    year_download += 10
+for year in range(1900, 1960, 10):
+    url = "https://www.retrosheet.org/events/" + str(year) + "sbox.zip"
+    urllib.request.urlretrieve(url, '/home/tk421/retrosheet/regular-season-box-scores/' + str(year) + 'sbox.zip')
+    print("Downloading " + str(year) + "'s box score files")
 
 print("Box score files download complete.")
 
