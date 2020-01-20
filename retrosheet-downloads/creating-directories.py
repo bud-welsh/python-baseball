@@ -1,19 +1,23 @@
 # Creating the directories that will hold our downloads
-import os
 
-# Change these paths for your machine 
-regular_events_path = '/home/tk421/retrosheet/regular-season-events' 
-regular_box_path = '/home/tk421/retrosheet/regular-box-score'
-allstar_events_path = '/home/tk421/retrosheet/all-star-events'
-postseason_events_path = '/home/tk421/retrosheet/post-season-events'
-disrepancy_path = '/home/tk421/retrosheet/discrepancy-files'
-regular_gamelog_path = '/home/tk421/retrosheet/regular-season-game-logs'
-world_series_gamelog_path = '/home/tk421/retrosheet/world-series-game-logs'
-allstar_gamelog_path = '/home/tk421/retrosheet/all-star-game-logs'
-wildcard_gamelog_path = '/home/tk421/retrosheet/wild-card-game-logs'
-lds_gamelog_path = '/home/tk421/retrosheet/league-divisional-series-game-logs'
-lcs_gamelog_path = '/home/tk421/retrosheet/league-championship-series-game-logs'
-regular_schedule_path = '/home/tk421/retrosheet/regular-season-schedules'
+# Now I'm going to add an input to get the right path for different machines
+
+import os
+print("The path to where I want to put my retrosheet folder is: /home/tk421/")
+retrosheet_home = input("What is the path to where you want to put the retrosheet folder? ")
+
+regular_events_path = retrosheet_home + 'retrosheet/regular-season-events' 
+regular_box_path = retrosheet_home + 'retrosheet/regular-box-score'
+allstar_events_path = retrosheet_home + 'retrosheet/all-star-events'
+postseason_events_path = retrosheet_home + 'retrosheet/post-season-events'
+disrepancy_path = retrosheet_home + 'retrosheet/discrepancy-files'
+regular_gamelog_path = retrosheet_home + 'retrosheet/regular-season-game-logs'
+world_series_gamelog_path = retrosheet_home + 'retrosheet/world-series-game-logs'
+allstar_gamelog_path = retrosheet_home + 'retrosheet/all-star-game-logs'
+wildcard_gamelog_path = retrosheet_home + 'retrosheet/wild-card-game-logs'
+lds_gamelog_path = retrosheet_home + 'retrosheet/league-divisional-series-game-logs'
+lcs_gamelog_path = retrosheet_home + 'retrosheet/league-championship-series-game-logs'
+regular_schedule_path = retrosheet_home + 'retrosheet/regular-season-schedules'
 
 try:
     os.makedirs(regular_events_path) # This one creates retrosheet directory and regular-seaon-events directory inside the retrosheet directory at the same time
