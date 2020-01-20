@@ -29,6 +29,7 @@ print("The path to where I want to put my retrosheet folder is: /home/tk421/.")
 retrosheet_home = input("What is the path to where you want to put the retrosheet folder? ")
 
 zip_file_path = retrosheet_home + 'retrosheet/zip-files'
+notice_path = retrosheet_home + 'retrosheet/notice'
 regular_events_path = retrosheet_home + 'retrosheet/regular-season-events' 
 regular_box_path = retrosheet_home + 'retrosheet/regular-box-score'
 allstar_events_path = retrosheet_home + 'retrosheet/all-star-events'
@@ -44,6 +45,7 @@ regular_schedule_path = retrosheet_home + 'retrosheet/regular-season-schedules'
 
 try:
     os.makedirs(zip_file_path)
+    os.mkdir(notice_path)
     os.mkdir(regular_events_path) 
     os.mkdir(regular_box_path)
     os.mkdir(allstar_events_path)
@@ -58,6 +60,7 @@ try:
     os.mkdir(regular_schedule_path)
 except OSError:
     print("Creation of directory %s failed" % zip_file_path)
+    print("Creation of directory %s failed" % notice_path)
     print("Creation of directory %s failed" % regular_events_path)
     print("Creation of directory %s failed" % regular_box_path)
     print("Creation of directory %s failed" % allstar_events_path)
@@ -72,6 +75,7 @@ except OSError:
     print("Creation of directory %s failed" % regular_schedule_path)
 else:
     print("Successful creation of directory %s" % zip_file_path)
+    print("Successful creation of directory %s" % notice_path)
     print("Successful creation of directory %s" % regular_events_path)
     print("Successful creation of directory %s" % regular_box_path)
     print("Successful creation of directory %s" % allstar_events_path)
@@ -89,6 +93,12 @@ print("All directories are created.")
 
 # Download all of the files.
 print("Beginning the download process now.")
+
+# Download notice file
+print("Starting to download the notice.")
+url = 'http://www.retrosheet.org/notice.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/notice.zip')
+print("The notice file is now downloaded")
 
 # Download all of the regular season event files.
 print("Starting to download all of the regular season event files from 1918 to 2019.")
@@ -154,31 +164,42 @@ urllib.request.urlretrieve(url, zip_file_path + '/glws.zip')
 print('All World Series game log files are now downloaded.')
 
 # Download all All-Star game log files
-print("Beginning to download all of the World Series game log files.")
+print("Beginning to download all of the All-Star game log files.")
 url = 'https://www.retrosheet.org/gamelogs/glas.zip'
 urllib.request.urlretrieve(url, zip_file_path + '/glas.zip')
 print('All All-Star game log files are now downloaded.')
 
 # Download all Wild Card game log files
-print("Beginning to download all of the World Series game log files.")
+print("Beginning to download all of the Wild Card game log files.")
 url = 'https://www.retrosheet.org/gamelogs/glwc.zip'
 urllib.request.urlretrieve(url, zip_file_path + '/glwc.zip')
 print('All Wild Card game log files are now downloaded.')
 
 # Download all League Divisional Series game log files
-print("Beginning to download all of the World Series game log files.")
+print("Beginning to download all of the League Divisional game log files.")
 url = 'https://www.retrosheet.org/gamelogs/gldv.zip'
 urllib.request.urlretrieve(url, zip_file_path + '/gldv.zip')
 print('All League Divisional Series game log files are now downloaded.')
 
 # Download all League Championship Series game log files
-print("Beginning to download all of the World Series game log files.")
+print("Beginning to download all of the League Championship game log files.")
 url = 'https://www.retrosheet.org/gamelogs/gllc.zip'
 urllib.request.urlretrieve(url, zip_file_path + '/gllc.zip')
 print('All League Championship Series game log files are now downloaded.')
 
+# Download all regular season schedule files
+print("Beginning to download all of the regular season schedule files.")
+url = 'http://www.retrosheet.org/schedule/schedule.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/schedule.zip')
+print('All schedule files are now downloaded.')
+
 # Extract all of zip files.
 print("Beginning the extracting process now.")
+
+# Extract the notice file.
+with ZipFile(zip_file_path + '/notice.zip', 'r') as notice_files:
+    notice_files.extractall(notice_path)
+    print("Extracted the notice file .")
 
 # Extract all of the regular season event files.
 print("Extracting all of the regular season event files.")
@@ -259,3 +280,8 @@ with ZipFile(zip_file_path + '/gldv.zip', 'r') as lds_gamelog_files:
 with ZipFile(zip_file_path + '/gllc.zip', 'r') as lcs_gamelog_files:
     lcs_gamelog_files.extractall(lcs_gamelog_path)
     print("Extracted all League Championship Series game log files.")
+
+# Extract all regular season schedule files.
+with ZipFile(zip_file_path + '/schedule.zip', 'r') as regular_schedule_files:
+    regular_schedule_files.extractall(regular_schedule_path)
+    print("Extracted all regular season schedule files.")
