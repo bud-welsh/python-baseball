@@ -33,7 +33,7 @@ regular_events_path = retrosheet_home + 'retrosheet/regular-season-events'
 regular_box_path = retrosheet_home + 'retrosheet/regular-box-score'
 allstar_events_path = retrosheet_home + 'retrosheet/all-star-events'
 postseason_events_path = retrosheet_home + 'retrosheet/post-season-events'
-disrepancy_path = retrosheet_home + 'retrosheet/discrepancy-files'
+discrepancy_path = retrosheet_home + 'retrosheet/discrepancy-files'
 regular_gamelog_path = retrosheet_home + 'retrosheet/regular-season-game-logs'
 world_series_gamelog_path = retrosheet_home + 'retrosheet/world-series-game-logs'
 allstar_gamelog_path = retrosheet_home + 'retrosheet/all-star-game-logs'
@@ -48,7 +48,7 @@ try:
     os.mkdir(regular_box_path)
     os.mkdir(allstar_events_path)
     os.mkdir(postseason_events_path)
-    os.mkdir(disrepancy_path)
+    os.mkdir(discrepancy_path)
     os.mkdir(regular_gamelog_path)
     os.mkdir(world_series_gamelog_path)
     os.mkdir(allstar_gamelog_path)
@@ -62,7 +62,7 @@ except OSError:
     print("Creation of directory %s failed" % regular_box_path)
     print("Creation of directory %s failed" % allstar_events_path)
     print("Creation of directory %s failed" % postseason_events_path)
-    print("Creation of directory %s failed" % disrepancy_path)
+    print("Creation of directory %s failed" % discrepancy_path)
     print("Creation of directory %s failed" % regular_gamelog_path)
     print("Creation of directory %s failed" % world_series_gamelog_path)
     print("Creation of directory %s failed" % allstar_gamelog_path)
@@ -76,7 +76,7 @@ else:
     print("Successful creation of directory %s" % regular_box_path)
     print("Successful creation of directory %s" % allstar_events_path)
     print("Successful creation of directory %s" % postseason_events_path)
-    print("Successful creation of directory %s" % disrepancy_path)
+    print("Successful creation of directory %s" % discrepancy_path)
     print("Successful creation of directory %s" % regular_gamelog_path)
     print("Successful creation of directory %s" % world_series_gamelog_path)
     print("Successful creation of directory %s" % allstar_gamelog_path)
@@ -100,6 +100,48 @@ for year in range(1910, 2020, 10):
 
 print("The regular season event files download is complete.")
 
+# Download all of the regular season box score files.
+print("Starting to download all of the regular season box score files from 1871, 1872, and 1874.")
+
+# Download 1871, 1872, and 1874 box score files.
+url = 'https://www.retrosheet.org/events/1871box.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/1871box.zip')
+print("1871 regular season box score file is now downloaded")
+
+url = 'https://www.retrosheet.org/events/1872box.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/1872box.zip')
+print("1872 regular season box score file is now downloaded")
+
+url = 'https://www.retrosheet.org/events/1874box.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/1874box.zip')
+print("1874 regular season box score file is now downloaded")
+
+print("Beginning to download all of the regular season box score files from 1904 to 1973 except 1960 and 1961 are missing.")
+for year in range(1900 , 1960, 10):
+    url = 'https://www.retrosheet.org/events/' + str(year) + 'sbox.zip'
+    urllib.request.urlretrieve(url, zip_file_path + '/' + str(year) + 'box.zip')
+    print("%s's regular season box score files is now downloaded." % year)
+print('The regular season box score files are now downloaded.')
+
+# Download all All-Star Game event files.
+url = 'https://www.retrosheet.org/events/allas.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/allas.zip')
+print("All All-Star Game event files are now downloaded")
+
+# Download all Post-Season event files.
+url = 'https://www.retrosheet.org/events/allpost.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/allpost.zip')
+print("All All-Star Game event files are now downloaded")
+
+#Download all Discrepancy files 
+print("Beginning to download all of the Discrepancy files from 1909 to 1975")
+for year in range(1900 , 1980, 10):
+    url = 'https://www.retrosheet.org/' + str(year) + 'sdis.zip'
+    urllib.request.urlretrieve(url, zip_file_path + '/' + str(year) + 'sdis.zip')
+    print("%s's discrepancy files is now downloaded." % year)
+print('The discrepancy files are now downloaded.')
+
+
 # Extract all of zip files.
 print("Beginning the extracting process now.")
 
@@ -112,3 +154,43 @@ for year in range(1910, 2020, 10):
         print("Extracted %s's event files." % year)
 
 print("Extracted all of the regular season event files.")
+
+# Extrat all of the regular season box score files.
+print("Extracting all of the regular season box score files.")
+
+with ZipFile(zip_file_path + '/1871box.zip', 'r') as regular_box_files:
+    regular_box_files.extractall(regular_box_path)
+    print("Extracted 1871 regular season box score files.")
+
+with ZipFile(zip_file_path + '/1872box.zip', 'r') as regular_box_files:
+    regular_box_files.extractall(regular_box_path)
+    print("Extracted 1872 reagular season box score files.")
+
+with ZipFile(zip_file_path + '/1874box.zip', 'r') as regular_box_files:
+    regular_box_files.extractall(regular_box_path)
+    print("Extracted 1874 regular season box score files.")
+
+for year in range(1900, 1960, 10):
+    with ZipFile(zip_file_path + '/' + str(year) + 'box.zip', 'r') as regular_box_files:
+        regular_box_files.extractall(regular_box_path)
+        print("Extracted %s's regular season box score files." % year)
+
+print("Extracted all of the regular season box score files.")
+
+# Extract all All-Star Game event files.
+with ZipFile(zip_file_path + '/allas.zip', 'r') as allstar_events_files:
+    allstar_events_files.extractall(allstar_events_path)
+    print("Extracted all All-Star Game event files except for 1945 when there was no All-Star Game.")
+
+# Extract all Post-Season event files
+with ZipFile(zip_file_path + '/allpost.zip', 'r') as postseason_events_file:
+    postseason_events_file.extractall(postseason_events_path)
+    print("Extracted all Post-Season event files except for 1904 and 1994 when there was not any post-seasons.")
+
+# Extract all Discrepancy files
+for year in range(1900, 1980, 10):
+    with ZipFile(zip_file_path + '/' + str(year) + 'sdis.zip', 'r') as discrepancy_files:
+        discrepancy_files.extractall(discrepancy_path)
+        print("Extracted %s's discrepancy files." % year)
+
+print("Extracted all of the discrepancy files.")
