@@ -24,8 +24,8 @@ import os
 import urllib.request
 from zipfile import ZipFile
 
-# Create directories to store the retrosheet zip files
-print("The path to where I want to put my retrosheet folder is: /home/tk421/")
+# Create directories to store the retrosheet zip files.
+print("The path to where I want to put my retrosheet folder is: /home/tk421/.")
 retrosheet_home = input("What is the path to where you want to put the retrosheet folder? ")
 
 regular_events_path = retrosheet_home + 'retrosheet/regular-season-events/zip-files' 
@@ -80,3 +80,21 @@ else:
     print("Successful creation of directory %s" % lds_gamelog_path)
     print("Successful creation of directory %s" % lcs_gamelog_path)
     print("Successful creation of directory %s" % regular_schedule_path)
+
+print("All directories are created.")
+
+# Download all of the files.
+
+# Download all of the regular season event files.
+print("Starting to download all of the regular season event files from 1918 to 2019")
+
+for year in range(1910, 2020, 10):
+    url = 'https://www.retrosheet.org/events/' + str(year) + 'seve.zip'
+    urllib.request.urlretrieve(url, regular_events_path + '/' + str(year) + 'seve.zip')
+    print("%ss regular season event files is now downloaded." % year)
+
+print("The regular season event files download is complete.")
+
+# Extract all of zip files.
+
+# Extract all of the regular season event.
