@@ -88,6 +88,7 @@ else:
 print("All directories are created.")
 
 # Download all of the files.
+print("Beginning the download process now.")
 
 # Download all of the regular season event files.
 print("Starting to download all of the regular season event files from 1918 to 2019.")
@@ -100,5 +101,14 @@ for year in range(1910, 2020, 10):
 print("The regular season event files download is complete.")
 
 # Extract all of zip files.
+print("Beginning the extracting process now.")
 
-# Extract all of the regular season event.
+# Extract all of the regular season event files.
+print("Extracting all of the regular season event files.")
+
+for year in range(1910, 2020, 10):
+    with ZipFile(zip_file_path + '/' + str(year) + 'seve.zip', 'r') as regular_event_files:
+        regular_event_files.extractall(regular_events_path)
+        print("Extracted %s's event files." % year)
+
+print("Extracted all of the regular season event files.")
