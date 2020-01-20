@@ -134,13 +134,48 @@ urllib.request.urlretrieve(url, zip_file_path + '/allpost.zip')
 print("All All-Star Game event files are now downloaded")
 
 #Download all Discrepancy files 
-print("Beginning to download all of the Discrepancy files from 1909 to 1975")
+print("Beginning to download all of the Discrepancy files from 1909 to 1975.")
 for year in range(1900 , 1980, 10):
     url = 'https://www.retrosheet.org/' + str(year) + 'sdis.zip'
     urllib.request.urlretrieve(url, zip_file_path + '/' + str(year) + 'sdis.zip')
     print("%s's discrepancy files is now downloaded." % year)
 print('The discrepancy files are now downloaded.')
 
+# Download all regular season game log files
+print("Beginning to download all of the regular season game log files from 1871 to 2019.")
+url = 'https://www.retrosheet.org/gamelogs/gl1871_2019.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/gl1871_2019.zip')
+print('All regular season game log files are now downloaded.')
+
+# Download all World Series game log files
+print("Beginning to download all of the World Series game log files.")
+url = 'https://www.retrosheet.org/gamelogs/glws.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/glws.zip')
+print('All World Series game log files are now downloaded.')
+
+# Download all All-Star game log files
+print("Beginning to download all of the World Series game log files.")
+url = 'https://www.retrosheet.org/gamelogs/glas.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/glas.zip')
+print('All All-Star game log files are now downloaded.')
+
+# Download all Wild Card game log files
+print("Beginning to download all of the World Series game log files.")
+url = 'https://www.retrosheet.org/gamelogs/glwc.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/glwc.zip')
+print('All Wild Card game log files are now downloaded.')
+
+# Download all League Divisional Series game log files
+print("Beginning to download all of the World Series game log files.")
+url = 'https://www.retrosheet.org/gamelogs/gldv.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/gldv.zip')
+print('All League Divisional Series game log files are now downloaded.')
+
+# Download all League Championship Series game log files
+print("Beginning to download all of the World Series game log files.")
+url = 'https://www.retrosheet.org/gamelogs/gllc.zip'
+urllib.request.urlretrieve(url, zip_file_path + '/gllc.zip')
+print('All League Championship Series game log files are now downloaded.')
 
 # Extract all of zip files.
 print("Beginning the extracting process now.")
@@ -182,15 +217,45 @@ with ZipFile(zip_file_path + '/allas.zip', 'r') as allstar_events_files:
     allstar_events_files.extractall(allstar_events_path)
     print("Extracted all All-Star Game event files except for 1945 when there was no All-Star Game.")
 
-# Extract all Post-Season event files
+# Extract all Post-Season event files.
 with ZipFile(zip_file_path + '/allpost.zip', 'r') as postseason_events_file:
     postseason_events_file.extractall(postseason_events_path)
     print("Extracted all Post-Season event files except for 1904 and 1994 when there was not any post-seasons.")
 
-# Extract all Discrepancy files
+# Extract all Discrepancy files.
 for year in range(1900, 1980, 10):
     with ZipFile(zip_file_path + '/' + str(year) + 'sdis.zip', 'r') as discrepancy_files:
         discrepancy_files.extractall(discrepancy_path)
         print("Extracted %s's discrepancy files." % year)
 
 print("Extracted all of the discrepancy files.")
+
+# Extract all regular season game log files.
+with ZipFile(zip_file_path + '/gl1871_2019.zip', 'r') as regular_gamelog_files:
+    regular_gamelog_files.extractall(regular_gamelog_path)
+    print("Extracted all regular season game log files.")
+
+# Extract all World Series game log files.
+with ZipFile(zip_file_path + '/glws.zip', 'r') as world_series_gamelog_files:
+    world_series_gamelog_files.extractall(world_series_gamelog_path)
+    print("Extracted all World Series game log files.")
+    
+# Extract all All-Star game log files.
+with ZipFile(zip_file_path + '/glas.zip', 'r') as allstar_gamelog_files:
+    allstar_gamelog_files.extractall(allstar_gamelog_path)
+    print("Extracted all All-Star game log files.")
+
+# Extract all Wild Card game log files.
+with ZipFile(zip_file_path + '/glwc.zip', 'r') as wildcard_gamelog_files:
+    wildcard_gamelog_files.extractall(wildcard_gamelog_path)
+    print("Extracted all Wild Card game log files.")
+
+# Extract all League Divisional Series game log files.
+with ZipFile(zip_file_path + '/gldv.zip', 'r') as lds_gamelog_files:
+    lds_gamelog_files.extractall(lds_gamelog_path)
+    print("Extracted all League Divisional Series game log files.")
+
+# Extract all League Championship Series game log files.
+with ZipFile(zip_file_path + '/gllc.zip', 'r') as lcs_gamelog_files:
+    lcs_gamelog_files.extractall(lcs_gamelog_path)
+    print("Extracted all League Championship Series game log files.")
