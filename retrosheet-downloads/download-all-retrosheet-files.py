@@ -144,7 +144,7 @@ urllib.request.urlretrieve(url, zip_file_path + '/allpost.zip')
 print("All All-Star Game event files are now downloaded")
 
 #Download all Discrepancy files 
-print("Beginning to download all of the Discrepancy files from 1909 to 1975.")
+print("Beginning to download all of the Discrepancy files from 1909 to 1979.")
 for year in range(1900 , 1980, 10):
     url = 'https://www.retrosheet.org/' + str(year) + 'sdis.zip'
     urllib.request.urlretrieve(url, zip_file_path + '/' + str(year) + 'sdis.zip')
