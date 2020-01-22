@@ -1,4 +1,4 @@
-# Here are the batting variables.
+# Here are the 2019 batting variables.
 plate_apperances = 186518
 at_bats = 166651
 hits = 42039
@@ -11,7 +11,7 @@ strike_outs = 42823
 hit_by_pitch = 1984
 outs = (plate_apperances - hits - walks - hit_by_pitch - strike_outs)
 
-# These are the random batting percentages
+# These are the 2019 random batting percentages
 single_average = singles / plate_apperances
 double_average = doubles / plate_apperances
 triple_average = triples / plate_apperances
