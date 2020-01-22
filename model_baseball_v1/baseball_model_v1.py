@@ -1,29 +1,33 @@
 
 
 # Here are the 2019 batting variables.
-plate_apperances = 186518
-at_bats = 166651
-hits = 42039
-doubles = 8531
-triples = 785
-home_runs = 6776
-singles = (42039 - doubles - triples - home_runs)
-walks = 15895
-strike_outs = 42823
-hit_by_pitch = 1984
-outs = (plate_apperances - hits - walks - hit_by_pitch - strike_outs)
+plate_apperances_raw = 186518
+at_bats_raw = 166651
+hits_raw = 42039
+doubles_raw = 8531
+triples_raw = 785
+home_runs_raw = 6776
+singles_raw = (42039 - doubles - triples - home_runs)
+walks_raw = 15895
+strike_outs_raw = 42823
+hit_by_pitch_raw = 1984
+outs_raw = (plate_apperances_raw - hits_raw - walks_raw - hit_by_pitch_raw - strike_outs_raw)
 
 # These are the 2019 random batting percentages.
-single_average = singles / plate_apperances
-double_average = doubles / plate_apperances
-triple_average = triples / plate_apperances
-home_run_average = home_runs / plate_apperances
-walk_average = walks / plate_apperances
-strike_out_average = strike_outs / plate_apperances
-hit_by_pitch_average = hit_by_pitch / plate_apperances
-out_average = outs / plate_apperances
+single_probability = singles_raw / plate_apperances_raw
+double_probability = doubles_raw / plate_apperances_raw
+triple_probability = triples_raw / plate_apperances_raw
+home_run_probability = home_runs_raw / plate_apperances_raw
+walk_probability = walks_raw / plate_apperances_raw
+strike_out_probability = strike_outs_raw / plate_apperances_raw
+hit_by_pitch_probability = hit_by_pitch_raw / plate_apperances_raw
+out_probability = outs_raw / plate_apperances_raw
 
-print(single_average + double_average + triple_average + home_run_average + walk_average + strike_out_average + hit_by_pitch_average + out_average)
+print(single_probability + double_probability + triple_probability + home_run_probability + walk_probability + strike_out_probability + hit_by_pitch_probability + out_probability)
 
 # This will decide the play outcome.
 
+# This will count the play outcome result
+def count_play_result(play_outcome):
+    if batted_single:
+        hit = hit + 1
