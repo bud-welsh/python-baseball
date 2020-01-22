@@ -9,10 +9,19 @@ singles = (42039 - doubles - triples - home_runs)
 walks = 15895
 strike_outs = 42823
 hit_by_pitch = 1984
-sacrifice_hits = 776
-sacrifice_flies = 1150
+outs = (plate_apperances - hits - walks - hit_by_pitch - strike_outs)
 
+# These are the random batting percentages
+single_average = singles / plate_apperances
+double_average = doubles / plate_apperances
+triple_average = triples / plate_apperances
+home_run_average = home_runs / plate_apperances
+walk_average = walks / plate_apperances
+strike_out_average = strike_outs / plate_apperances
+hit_by_pitch_average = hit_by_pitch / plate_apperances
+out_average = outs / plate_apperances
 
+print(single_average + double_average + triple_average + home_run_average + walk_average + strike_out_average + hit_by_pitch_average + out_average)
 
 # The first half inning
 for outs in range(0, 4):
