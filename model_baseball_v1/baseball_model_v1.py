@@ -26,8 +26,9 @@ def triple_probability(triples_raw, plate_apperances_raw):
 def home_run_probability(home_runs_raw, plate_apperances_raw):
     return home_runs_raw / plate_apperances_raw
 
+def walk_probability(walks_raw, plate_apperances_raw):
+    return walks_raw / plate_apperances_raw
 
-    
 # single_probability = singles_raw / plate_apperances_raw
 # double_probability = doubles_raw / plate_apperances_raw
 # triple_probability = triples_raw / plate_apperances_raw
