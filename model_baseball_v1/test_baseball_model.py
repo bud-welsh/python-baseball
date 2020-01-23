@@ -11,5 +11,8 @@ class Test_GetProbability(unittest.TestCase):
     def test_triple_probability(self):
         self.assertEqual(baseball_model_v1.triple_probability(8, 1865), 0.004289544235924933)
 
+    def test_home_run_probability(self):
+        self.assertEqual(baseball_model_v1.home_run_probability(7, 187), 0.0374331550802139)
+
 if __name__ == '__main__':
     unittest.main()
