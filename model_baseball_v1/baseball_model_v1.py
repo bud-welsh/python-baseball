@@ -17,6 +17,9 @@ outs_raw = (plate_apperances_raw - hits_raw - walks_raw - hit_by_pitch_raw - str
 def single_probability(singles_raw, plate_apperances_raw):
     return singles_raw / plate_apperances_raw
 
+def double_probability(doubles_raw, plate_apperances_raw):
+    return doubles_raw / plate_apperances_raw
+
 # single_probability = singles_raw / plate_apperances_raw
 # double_probability = doubles_raw / plate_apperances_raw
 # triple_probability = triples_raw / plate_apperances_raw
