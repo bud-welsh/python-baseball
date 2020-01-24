@@ -17,7 +17,15 @@ class Test_GetProbability(unittest.TestCase):
     def test_walk_probability(self):
         self.assertEqual(baseball_model_v1.walk_probability(16, 187), 0.0855614973262032)
 
-    
+    def test_strike_out_probability(self):
+        self.assertEqual(baseball_model_v1.strike_out_probability(43, 187), 0.22994652406417113)
 
+    def test_hit_by_pitch_probability(self):
+        self.assertEqual(baseball_model_v1.hit_by_pitch_probability(20, 1865), 0.010723860589812333)
+
+    def test_out_probability(self):
+        self.assertEqual(baseball_model_v1.out_probability(111, 186), 0.5967741935483871)
+
+    
 if __name__ == '__main__':
     unittest.main()
