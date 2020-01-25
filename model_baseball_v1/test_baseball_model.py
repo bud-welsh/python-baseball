@@ -26,6 +26,9 @@ class Test_GetProbability(unittest.TestCase):
     def test_out_probability(self):
         self.assertEqual(baseball_model_v1.out_probability(111, 186), 0.5967741935483871)
 
+class Test_RandomPlay(unittest.TestCase):
+    def test_random_single(self):
+        self.assertEqual(baseball_model_v1.random_play(0.13911), print())
     
 if __name__ == '__main__':
     unittest.main()

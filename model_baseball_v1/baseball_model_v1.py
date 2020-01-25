@@ -1,4 +1,7 @@
+import random
 
+outs = 0
+hits = 0
 
 # Here are the 2019 raw batting variables.
 plate_apperances_raw = 186518
@@ -38,3 +41,20 @@ def hit_by_pitch_probability(hit_by_pitch_raw, plate_apperances_raw):
 def out_probability(outs_raw, plate_apperances_raw):
     return outs_raw / plate_apperances_raw
 
+# Random play function
+random_number = random.random()
+print(random_number)
+
+def random_play(random_number):
+    if random_number <= single_probability:
+        global hits
+        hits += 1
+        print("""It's a single!""")
+        print(str(hits) + " hits today")
+    else:
+        global outs
+        outs += 1
+        print("""It's an out.""")
+        print(str(outs) + " outs")
+
+random_play()
