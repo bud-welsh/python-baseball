@@ -6,11 +6,11 @@ plate_appearances = 186518
 home_runs = 6776
 triples = 785
 doubles = 8531
-hits = 42039
-singles = hits - home_runs - triples - doubles
+raw_hits = 42039
+singles = raw_hits - home_runs - triples - doubles
 walks = 15895
 strike_outs = 42823
-raw_outs = plate_appearances - hits - walks - strike_outs
+raw_outs = plate_appearances - raw_hits - walks - strike_outs
 
 # Probabilities
 single_probability = singles / plate_appearances
@@ -24,6 +24,7 @@ out_probability = raw_outs / plate_appearances + strike_out_probability
 # Game variables
 outs = 0
 hits = 0
+base_advance = 0
 
 # Inning test
 while outs < 3:
