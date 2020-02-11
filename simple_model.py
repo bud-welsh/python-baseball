@@ -24,14 +24,38 @@ out_probability = raw_outs / plate_appearances + strike_out_probability
 # Game variables
 outs = 0
 hits = 0
+runs = 0
 base_advance = 0
+first_runner = False
+second_runner = False
+third_runner = False
 
 # Inning test
 while outs < 3:
     play = random.random()
     if play <= single_probability:
         hits += 1
-        print("Single")
+        print("Batter hits a single")
+        if third_runner == True:
+            runs += 1
+            third_runner = False
+            print("Runner on third scores.")
+        else:
+            pass
+        if second_runner == True:
+            second_runner = False
+            third_runner = True
+            print("Runner on second advances to third.")
+        else:
+            pass
+        if first_runner == True:
+            first_runner = False
+            second_runner = True
+            print("Runner on first advances to second.")
+        else:
+            pass
+        first_runner = True
+        print("Runner on first.")
     elif play <= double_probability:
         hits += 1
         print("Double")
