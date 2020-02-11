@@ -25,7 +25,6 @@ out_probability = raw_outs / plate_appearances + strike_out_probability
 outs = 0
 hits = 0
 runs = 0
-base_advance = 0
 first_runner = False
 second_runner = False
 third_runner = False
@@ -35,7 +34,7 @@ while outs < 3:
     play = random.random()
     if play <= single_probability:
         hits += 1
-        print("Batter hits a single")
+        print("Batter hits a single.")
         if third_runner == True:
             runs += 1
             third_runner = False
@@ -55,23 +54,97 @@ while outs < 3:
         else:
             pass
         first_runner = True
-        print("Runner on first.")
     elif play <= double_probability:
         hits += 1
-        print("Double")
+        print("Batter hits a double.")
+        if third_runner == True:
+            runs += 1
+            print("Runner on third scores.")
+            third_runner = False
+        else:
+            pass
+        if second_runner == True:
+            runs += 1
+            print("Runner on second scores.")
+            second_runner = False
+        else:
+            pass
+        if first_runner == True:
+            third_runner = True
+            print("Runner on first goes to third.")
+            first_runner = False
+        else:
+            pass
+        second_runner = True
     elif play <= triple_probability:
         hits += 1
-        print("Triple")
+        print("The batter hits a triple.")
+        if third_runner == True:
+            runs += 1
+            print("Runner on third scores.")
+            third_runner = False
+        else:
+            pass
+        if second_runner == True:
+            runs += 1
+            print("Runner on second scores.")
+            second_runner = False
+        else:
+            pass
+        if first_runner == True:
+            runs += 1
+            print("Runner on first scores.")
+            first_runner = False
+        else:
+            pass
+        third_runner = True
     elif play <= home_run_probability:
         hits += 1
-        print("Home Run")
+        runs += 1
+        print("There's a home run.")
+        if third_runner == True:
+            runs += 1
+            print("Runner on third scores.")
+            third_runner = False
+        else:
+            pass
+        if second_runner == True:
+            runs += 1
+            print("Runner on second scores.")
+            second_runner = False
+        else:
+            pass
+        if first_runner == True:
+            runs += 1
+            print("Runner on first scores.")
+            first_runner = False
+        else:
+            pass
     elif play <= walk_probability:
-        print("Walk")
+        print("Batter takes a walk.")
+        if third_runner == True and second_runner == True and first_runner == True:
+            runs += 1
+            print("Runner on third walks home, and bases are still loaded.")
+        else:
+            pass
+        if third_runner == False and second_runner == True and first_runner == True:
+            third_runner = True
+            print("After the walk, the bases are now loaded.")
+        else:
+            pass
+        if third_runner == False and second_runner == False and first_runner == True:
+            second_runner = True
+            print("Runners are on first and second.")
+        else:
+            pass
+        if third_runner == False and second_runner == False and first_runner == False:
+            first_runner = True
+        else:
+            pass
     elif play <= strike_out_probability:
         outs += 1
-        print("Strike Out")
+        print("Batter strikes out.")
     else:
         outs += 1
-        print("Out")
-print("Hits %d" % hits)
-print("Outs %d" % outs)
+        print("Batter is out.")
+print("At the end of this half inning, %d runs on %d hits." % (runs, hits))
