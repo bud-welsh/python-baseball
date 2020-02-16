@@ -25,6 +25,10 @@ out_probability = raw_outs / plate_appearances + strike_out_probability
 outs = 0
 hits = 0
 runs = 0
+left_on_base = 0
+inning_runs = 0
+inning_hits = 0
+inning_left_on_base = 0
 first_runner = False
 second_runner = False
 third_runner = False
@@ -147,4 +151,17 @@ while outs < 3:
     else:
         outs += 1
         print("Batter is out.")
-print("At the end of this half inning, %d runs on %d hits." % (runs, hits))
+if first_runner == True:
+    left_on_base += 1
+else:
+    pass
+if second_runner == True:
+    left_on_base += 1
+else:
+    pass
+if third_runner == True:
+    left_on_base += 1
+print("At the end of this half inning, %d runs on %d hits and %d left on base." % (runs, hits, left_on_base))
+first_runner = False
+second_runner = False
+third_runner = False
